@@ -16,7 +16,6 @@ module Billit
     property :authors
     property :origin_chamber
     property :current_urgency
-    property :table_history
     property :link_law
 
     property :events
