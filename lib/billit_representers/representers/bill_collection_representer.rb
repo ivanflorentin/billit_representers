@@ -1,7 +1,7 @@
 require 'roar/representer/json'
 
 module Billit
-  module BillsRepresenter
+  module BillCollectionRepresenter
     include Roar::Representer::JSON
     include Roar::Representer::Feature::Hypermedia
 
