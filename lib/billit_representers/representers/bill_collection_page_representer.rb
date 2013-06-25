@@ -5,7 +5,7 @@ module Billit
     include Roar::Representer::JSON
     include Roar::Representer::Feature::Hypermedia
    
-    collection :items, :extend => BillRepresenter, :class => Bill
+    collection :bills, :extend => BillRepresenter, :class => Bill
 
     property :total_entries
     property :current_page
@@ -25,7 +25,7 @@ module Billit
         if previous_page
     end
    
-    def items
+    def bills
       self
     end
   end
