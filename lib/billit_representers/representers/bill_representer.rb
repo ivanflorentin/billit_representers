@@ -1,4 +1,4 @@
-require 'roar/representer/json'
+require 'roar/representer/json/hal'
 require 'roar/representer/feature/hypermedia'
 
 module Billit
