@@ -20,7 +20,7 @@ module Billit
     property :matters
     property :authors
     property :publish_date
-    property :summary
+    property :abstract
     property :tags
 
     property :events

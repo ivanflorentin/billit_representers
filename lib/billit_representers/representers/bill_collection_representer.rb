@@ -1,4 +1,6 @@
 require 'roar/representer/json'
+require 'billit_representers/representers/bill_representer'
+
 
 module Billit
   module BillCollectionRepresenter
