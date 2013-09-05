@@ -1,5 +1,5 @@
 require 'roar/representer/json'
-require 'billit_representers/representers/bill_representer'
+require 'billit_representers_south_africa/representers/bill_representer'
 
 module Billit
   module BillCollectionPageRepresenter
