@@ -1,4 +1,3 @@
-require 'roar/representer/json/hal'
 require 'roar/representer/feature/hypermedia'
 require 'active_model'
 
