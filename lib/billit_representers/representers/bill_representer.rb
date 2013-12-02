@@ -1,4 +1,5 @@
 require 'roar/representer/feature/hypermedia'
+require 'roar/representer/feature/http_verbs'
 require 'active_model'
 
 module Billit
