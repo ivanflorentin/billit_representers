@@ -44,7 +44,7 @@ module Billit
     property :abstract
     property :tags
 
-    property :events
+    collection :events, :extend => EventRepresenter, :class => Event
     property :urgencies
     property :reports
     property :modifications
