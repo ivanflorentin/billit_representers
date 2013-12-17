@@ -1,10 +1,14 @@
+require 'roar'
+require 'roar/representer'
 require 'roar/representer/feature/hypermedia'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
 require 'active_model'
+require 'roar/representer/json/hal'
 
 module Billit
   module EventRepresenter
+    # include Roar::Representer
     include Roar::Representer::JSON::HAL
 
     module Initializer

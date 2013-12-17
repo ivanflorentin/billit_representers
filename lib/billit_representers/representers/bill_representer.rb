@@ -2,9 +2,12 @@ require 'roar/representer/feature/hypermedia'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
 require 'active_model'
+require 'roar/representer/json/hal'
+require 'billit_representers/representers/event_representer'
 
 module Billit
   module BillRepresenter
+    # include Roar::Representer
     include Roar::Representer::JSON::HAL
 
     module Initializer
