@@ -2,7 +2,7 @@ require 'roar/representer/feature/hypermedia'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
 require 'active_model'
-require 'roar/representer/json/hal'
+require 'roar/rails/hal'
 require 'billit_representers/representers/event_representer'
 
 module Billit
