@@ -4,16 +4,17 @@ require 'roar/representer/feature/hypermedia'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
 require 'active_model'
-require 'roar/rails/hal'
+# require 'roar/rails/hal'
+# require 'roar/representer/json/hal'
 
 module Billit
-  module EventRepresenter
+  module PaperworkRepresenter
     # include Roar::Representer
     include Roar::Representer::JSON::HAL
 
     module Initializer
       def initialize
-        extend Billit::EventRepresenter
+        extend Billit::PaperworkRepresenter
         extend Roar::Representer::Feature::Client
         super
       end

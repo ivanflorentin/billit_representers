@@ -2,8 +2,9 @@ require 'roar/representer/feature/hypermedia'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
 require 'active_model'
-require 'roar/rails/hal'
-require 'billit_representers/representers/event_representer'
+# require 'roar/rails/hal'
+# require 'roar/representer/json/hal'
+require 'billit_representers/representers/paperwork_representer'
 
 module Billit
   module BillRepresenter
@@ -23,43 +24,43 @@ module Billit
       klass.send :include, ActiveModel::Validations
       klass.send :include, Roar::Representer::Feature::HttpVerbs
       klass.validates_presence_of :uid
-      klass.validates :matters, inclusion: { in: @@matters_valid_values }
+      klass.validates :subject_areas, inclusion: { in: @@subject_areas_valid_values }
       klass.validates :stage, inclusion: { in: @@stage_valid_values }
-      klass.validates :origin_chamber, inclusion: { in: @@origin_chamber_valid_values }
-      klass.validates :current_urgency, inclusion: { in: @@current_urgency_valid_values }
+      klass.validates :initial_chamber, inclusion: { in: @@initial_chamber_valid_values }
+      klass.validates :current_priority, inclusion: { in: @@current_priority_valid_values }
     end
 
     property :uid
     property :title
     property :creation_date
-    property :initiative
-    property :origin_chamber
-    property :current_urgency
+    property :source
+    property :initial_chamber
+    property :current_priority
     property :stage
     property :sub_stage
-    property :state
-    property :law
-    property :link_law
-    property :merged
-    property :matters
+    property :status
+    property :resulting_document
+    property :law_link
+    property :merged_bills
+    property :subject_areas
     property :authors
     property :publish_date
     property :abstract
     property :tags
 
-    collection :events, :extend => EventRepresenter, :class => Event
-    property :urgencies
+    collection :paperworks, :extend => PaperworkRepresenter, :class => Paperwork
+    property :priorities
     property :reports
-    property :modifications
+    property :revisions
     property :documents
-    property :instructions
-    property :observations
+    property :directives
+    property :remarks
 
     link :self do
       bill_url(self.uid)
     end
 
-    @@matters_valid_values =
+    @@subject_areas_valid_values =
       [
         'Defensa',
         'Impuestos',
@@ -114,13 +115,13 @@ module Billit
         'Trámite finalización en Cámara de Origen'
       ]
 
-    @@origin_chamber_valid_values =
+    @@initial_chamber_valid_values =
       [
         'C.Diputados',
         'Senado'
       ]
 
-    @@current_urgency_valid_values =
+    @@current_priority_valid_values =
       [
         'Discusión inmediata',
         'Simple',

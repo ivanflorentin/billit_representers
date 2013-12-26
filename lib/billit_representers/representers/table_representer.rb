@@ -21,7 +21,7 @@ module Billit
     end
 
     property :uid
-    property :origin_chamber
+    property :initial_chamber
     property :creation_date
     property :legislature
     property :session
