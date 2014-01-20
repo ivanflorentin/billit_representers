@@ -25,6 +25,16 @@ class Bill
   include Billit::BillRepresenter
 end
 ```
+Some bill attributes require their own models to be created. In this particular bill model these are:
+- Directive
+- Document
+- Paperwork
+- Priority
+- Remark
+- Report
+##Using models included in the representer
+This is the preferred option if bill information is fetched and no persistence is needed.
+TO DO
 ##Validations
 Bills require some attributes to exist or to have restricted values.
 ```

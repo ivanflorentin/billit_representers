@@ -6,13 +6,13 @@ require 'roar/representer/feature/client'
 require 'roar/representer/json/hal'
 
 module Billit
-  module PaperworkRepresenter
+  module RemarkRepresenter
     include Roar::Representer::JSON::HAL
     # include Roar::Representer::JSON
 
     module Initializer
       def initialize
-        extend Billit::PaperworkRepresenter
+        extend Billit::RemarkRepresenter
         extend Roar::Representer::Feature::Client
         super
       end
@@ -23,13 +23,9 @@ module Billit
       klass.send :include, Roar::Representer::Feature::HttpVerbs
     end
 
-    property :chamber
-    property :created_at
     property :date
-    property :description
-    property :session
+    property :event
     property :stage
-    property :updated_at
 
   end
 end

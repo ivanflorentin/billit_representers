@@ -1,7 +1,7 @@
 require 'roar/representer'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
-# require 'roar/representer/json'
+require 'roar/representer/json'
 require 'roar/representer/json/hal'
 # require 'roar/rails/hal'
 require 'active_model'
@@ -11,30 +11,31 @@ require 'billit_representers/representers/report_representer'
 require 'billit_representers/representers/document_representer'
 require 'billit_representers/representers/directive_representer'
 require 'billit_representers/representers/remark_representer'
+require 'billit_representers/models/paperwork'
+require 'billit_representers/models/priority'
+require 'billit_representers/models/report'
+require 'billit_representers/models/document'
+require 'billit_representers/models/directive'
+require 'billit_representers/models/remark'
 
 module Billit
-  module BillRepresenter
+  class Bill
     include Roar::Representer::JSON::HAL
+    include Roar::Representer::Feature::HttpVerbs
+    include ActiveModel::Validations
     # include Roar::Rails::HAL
     # include Roar::Representer::JSON
 
-    module Initializer
-      def initialize
-        extend Billit::BillRepresenter
-        extend Roar::Representer::Feature::Client
-        super
-      end
-    end
+    # validates_presence_of :uid
+    # validates :subject_areas, inclusion: { in: @@subject_areas_valid_values }
+    # validates :stage, inclusion: { in: @@stage_valid_values }
+    # validates :initial_chamber, inclusion: { in: @@initial_chamber_valid_values }
+    # validates :current_priority, inclusion: { in: @@current_priority_valid_values }
 
-    def self.included(klass)
-      klass.send :prepend, Initializer
-      klass.send :include, ActiveModel::Validations
-      klass.send :include, Roar::Representer::Feature::HttpVerbs
-      klass.validates_presence_of :uid
-      klass.validates :subject_areas, inclusion: { in: @@subject_areas_valid_values }
-      klass.validates :stage, inclusion: { in: @@stage_valid_values }
-      klass.validates :initial_chamber, inclusion: { in: @@initial_chamber_valid_values }
-      klass.validates :current_priority, inclusion: { in: @@current_priority_valid_values }
+    def initialize
+      # extend Billit::BillRepresenter
+      extend Roar::Representer::Feature::Client
+      super
     end
 
     property :uid
@@ -56,12 +57,12 @@ module Billit
     property :tags
     property :revisions
 
-    collection :paperworks, extend: PaperworkRepresenter, class: Paperwork
-    collection :priorities, extend: PriorityRepresenter, class: Priority
-    collection :reports, extend: ReportRepresenter, class: Report
-    collection :documents, extend: DocumentRepresenter, class: Document
-    collection :directives, extend: DirectiveRepresenter, class: Directive
-    collection :remarks, extend: RemarkRepresenter, class: Remark
+    collection :paperworks, extend: PaperworkRepresenter, class: Billit::Paperwork
+    collection :priorities, extend: PriorityRepresenter, class: Billit::Priority
+    collection :reports, extend: ReportRepresenter, class: Billit::Report
+    collection :documents, extend: DocumentRepresenter, class: Billit::Document
+    collection :directives, extend: DirectiveRepresenter, class: Billit::Directive
+    collection :remarks, extend: RemarkRepresenter, class: Billit::Remark
 
     link :self do
       bill_url(self.uid)
