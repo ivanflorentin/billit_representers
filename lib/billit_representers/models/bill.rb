@@ -11,12 +11,14 @@ require 'billit_representers/representers/report_representer'
 require 'billit_representers/representers/document_representer'
 require 'billit_representers/representers/directive_representer'
 require 'billit_representers/representers/remark_representer'
+require 'billit_representers/representers/revision_representer'
 require 'billit_representers/models/paperwork'
 require 'billit_representers/models/priority'
 require 'billit_representers/models/report'
 require 'billit_representers/models/document'
 require 'billit_representers/models/directive'
 require 'billit_representers/models/remark'
+require 'billit_representers/models/revision'
 
 module Billit
   class Bill
@@ -33,7 +35,6 @@ module Billit
     # validates :current_priority, inclusion: { in: @@current_priority_valid_values }
 
     def initialize
-      # extend Billit::BillRepresenter
       extend Roar::Representer::Feature::Client
       super
     end
@@ -55,7 +56,7 @@ module Billit
     property :publish_date
     property :abstract
     property :tags
-    property :revisions
+    property :bill_draft_link
 
     collection :paperworks, extend: PaperworkRepresenter, class: Billit::Paperwork
     collection :priorities, extend: PriorityRepresenter, class: Billit::Priority
@@ -63,6 +64,7 @@ module Billit
     collection :documents, extend: DocumentRepresenter, class: Billit::Document
     collection :directives, extend: DirectiveRepresenter, class: Billit::Directive
     collection :remarks, extend: RemarkRepresenter, class: Billit::Remark
+    collection :revisions, extend: RevisionRepresenter, class: Billit::Revision
 
     link :self do
       bill_url(self.uid)

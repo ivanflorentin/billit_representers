@@ -11,6 +11,7 @@ require 'billit_representers/representers/report_representer'
 require 'billit_representers/representers/document_representer'
 require 'billit_representers/representers/directive_representer'
 require 'billit_representers/representers/remark_representer'
+require 'billit_representers/representers/revision_representer'
 
 module Billit
   module BillRepresenter
@@ -54,7 +55,7 @@ module Billit
     property :publish_date
     property :abstract
     property :tags
-    property :revisions
+    property :bill_draft_link
 
     collection :paperworks, extend: PaperworkRepresenter, class: Paperwork
     collection :priorities, extend: PriorityRepresenter, class: Priority
@@ -62,6 +63,7 @@ module Billit
     collection :documents, extend: DocumentRepresenter, class: Document
     collection :directives, extend: DirectiveRepresenter, class: Directive
     collection :remarks, extend: RemarkRepresenter, class: Remark
+    collection :revisions, extend: RevisionRepresenter, class: Revision
 
     link :self do
       bill_url(self.uid)
