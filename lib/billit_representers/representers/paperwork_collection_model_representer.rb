@@ -1,15 +1,16 @@
 require 'roar/representer/json'
 require 'billit_representers/representers/paperwork_representer'
+require 'billit_representers/models/paperwork'
 
 module Billit
-  module PaperworkCollectionRepresenter
+  module PaperworkCollectionModelRepresenter
     # include Roar::Representer
     include Roar::Representer::JSON
     include Roar::Representer::Feature::Hypermedia
 
     module Initializer
       def initialize
-        extend Billit::PaperworkCollectionRepresenter
+        extend Billit::PaperworkCollectionModelRepresenter
         extend Roar::Representer::Feature::Client
         super
       end
@@ -20,7 +21,7 @@ module Billit
       klass.send :include, Roar::Representer::Feature::HttpVerbs
     end
    
-    collection :paperworks, :extend => PaperworkRepresenter, :class => Paperwork
+    collection :paperworks, :extend => Billit::PaperworkRepresenter, :class => Billit::Paperwork
 
     def paperworks
       collect

@@ -30,6 +30,15 @@ module Billit
     property :session
     property :stage
     property :updated_at
+    property :bill_uid
+
+    link :self do
+      paperwork_url(self.id)
+    end
+
+    link :bill do
+      bill_url(bill_uid)
+    end
 
   end
 end
