@@ -31,6 +31,7 @@ module Billit
     property :stage
     property :updated_at
     property :bill_uid
+    property :timeline_status
 
     link :self do
       paperwork_url(self.id)
@@ -39,6 +40,21 @@ module Billit
     link :bill do
       bill_url(bill_uid)
     end
+
+    @@timeline_status_valid_values =
+    [
+      'Ingreso',
+      'Avanza',
+      'Indicaciones',
+      'Votación',
+      'Urgencia',
+      'Rechazado',
+      'Inasistencia',
+      'Descartado',
+      'Informe',
+      'Retiro de Urgencia',
+      'Estado por Defecto'
+    ]
 
   end
 end
