@@ -3,4 +3,8 @@ module Billit
   class Paperwork
     include Billit::PaperworkRepresenter
   end
+
+  def document
+  	links[:document].href if links[:document].href
+  end
 end
