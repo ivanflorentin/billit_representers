@@ -39,6 +39,7 @@ module Billit
     end
 
     property :uid
+    property :short_uid
     property :title
     property :creation_date
     property :source
@@ -48,13 +49,15 @@ module Billit
     property :sub_stage
     property :status
     property :resulting_document
-    property :law_link
+    property :law_id
     property :merged_bills
     property :subject_areas
     property :authors
     property :publish_date
     property :abstract
     property :tags
+    property :law_xml_link
+    property :law_web_link
     property :bill_draft_link
 
     collection :paperworks, extend: PaperworkRepresenter, class: Paperwork
