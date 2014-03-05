@@ -56,9 +56,6 @@ module Billit
     property :publish_date
     property :abstract
     property :tags
-    property :law_xml_link
-    property :law_web_link
-    property :bill_draft_link
 
     collection :paperworks, extend: PaperworkRepresenter, class: Paperwork
     collection :priorities, extend: PriorityRepresenter, class: Priority
@@ -70,6 +67,18 @@ module Billit
 
     link :self do
       bill_url(self.uid)
+    end
+
+    link :law_xml do 
+        self.law_xml_link
+    end
+
+    link :law_web do 
+        self.law_web_link
+    end
+
+    link :bill_draft do 
+        self.bill_draft_link
     end
 
     @@subject_areas_valid_values =

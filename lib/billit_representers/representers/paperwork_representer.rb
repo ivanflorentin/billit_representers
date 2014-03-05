@@ -41,10 +41,6 @@ module Billit
       bill_url(bill_uid)
     end
 
-    link :document do
-      self.document_link
-    end
-
     @@timeline_status_valid_values =
     [
       'Ingreso',
