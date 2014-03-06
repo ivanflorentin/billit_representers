@@ -4,7 +4,7 @@ module Billit
     include Billit::BillModelCollectionPageRepresenter
 
     def self
-	  links[:self].href if links[:self].href
+	  links[:self].href if links[:self]
 	end
 
 	def next
