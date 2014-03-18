@@ -3,6 +3,8 @@ module Billit
   class Bill
     include Billit::BillModelRepresenter
 
+    attr_reader :representable_attrs
+
     def self_link
 	  links[:self].href if links[:self]
 	end
