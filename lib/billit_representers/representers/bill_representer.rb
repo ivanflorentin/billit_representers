@@ -57,13 +57,13 @@ module Billit
     property :abstract
     property :tags
 
-    collection :paperworks, extend: PaperworkRepresenter, class: Paperwork
-    collection :priorities, extend: PriorityRepresenter, class: Priority
-    collection :reports, extend: ReportRepresenter, class: Report
-    collection :documents, extend: DocumentRepresenter, class: Document
-    collection :directives, extend: DirectiveRepresenter, class: Directive
-    collection :remarks, extend: RemarkRepresenter, class: Remark
-    collection :revisions, extend: RevisionRepresenter, class: Revision
+    collection :paperworks, extend: PaperworkRepresenter, class: Paperwork, parse_strategy: :sync
+    collection :priorities, extend: PriorityRepresenter, class: Priority, parse_strategy: :sync
+    collection :reports, extend: ReportRepresenter, class: Report, parse_strategy: :sync
+    collection :documents, extend: DocumentRepresenter, class: Document, parse_strategy: :sync
+    collection :directives, extend: DirectiveRepresenter, class: Directive, parse_strategy: :sync
+    collection :remarks, extend: RemarkRepresenter, class: Remark, parse_strategy: :sync
+    collection :revisions, extend: RevisionRepresenter, class: Revision, parse_strategy: :sync
 
     link :self do
       bill_url(self.uid)
