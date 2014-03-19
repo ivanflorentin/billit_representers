@@ -39,17 +39,17 @@ module Billit
     end
 
     property :uid
-    property :short_uid
+    property :short_uid, writeable: false
     property :title
     property :creation_date
     property :source
     property :initial_chamber
-    property :current_priority
+    property :current_priority, writeable: false
     property :stage
     property :sub_stage
     property :status
     property :resulting_document
-    property :law_id
+    property :law_id, writeable: false
     property :merged_bills
     property :subject_areas
     property :authors
