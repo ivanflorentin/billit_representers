@@ -1,7 +1,7 @@
-require 'billit_representers/representers/bill_model_representer'
+require 'billit_representers/representers/bill_basic_representer'
 module Billit
   class BillBasic
-    include Billit::BillBasicModelRepresenter
+    include Billit::BillBasicRepresenter
 
     attr_reader :representable_attrs
 

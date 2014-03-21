@@ -7,14 +7,14 @@ require 'roar/representer/json/hal'
 require 'active_model'
 
 module Billit
-  module BillBasicModelRepresenter
+  module BillBasicRepresenter
     include Roar::Representer::JSON::HAL
     # include Roar::Rails::HAL
     # include Roar::Representer::JSON
 
     module Initializer
       def initialize
-        extend Billit::BillBasicModelRepresenter
+        extend Billit::BillBasicRepresenter
         extend Roar::Representer::Feature::Client
         super
       end

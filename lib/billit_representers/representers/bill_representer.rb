@@ -1,7 +1,7 @@
 require 'roar/representer'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
-# require 'roar/representer/json'
+require 'roar/representer/json'
 require 'roar/representer/json/hal'
 # require 'roar/rails/hal'
 require 'active_model'
@@ -12,6 +12,13 @@ require 'billit_representers/representers/document_representer'
 require 'billit_representers/representers/directive_representer'
 require 'billit_representers/representers/remark_representer'
 require 'billit_representers/representers/revision_representer'
+require 'billit_representers/models/paperwork'
+require 'billit_representers/models/priority'
+require 'billit_representers/models/report'
+require 'billit_representers/models/document'
+require 'billit_representers/models/directive'
+require 'billit_representers/models/remark'
+require 'billit_representers/models/revision'
 
 module Billit
   module BillRepresenter
@@ -57,13 +64,13 @@ module Billit
     property :abstract
     property :tags
 
-    collection :paperworks, extend: PaperworkRepresenter, class: Paperwork, parse_strategy: :sync
-    collection :priorities, extend: PriorityRepresenter, class: Priority, parse_strategy: :sync
-    collection :reports, extend: ReportRepresenter, class: Report, parse_strategy: :sync
-    collection :documents, extend: DocumentRepresenter, class: Document, parse_strategy: :sync
-    collection :directives, extend: DirectiveRepresenter, class: Directive, parse_strategy: :sync
-    collection :remarks, extend: RemarkRepresenter, class: Remark, parse_strategy: :sync
-    collection :revisions, extend: RevisionRepresenter, class: Revision, parse_strategy: :sync
+    collection :paperworks, extend: Billit::PaperworkRepresenter, class: Billit::Paperwork, parse_strategy: :sync
+    collection :priorities, extend: Billit::PriorityRepresenter, class: Billit::Priority, parse_strategy: :sync
+    collection :reports, extend: Billit::ReportRepresenter, class: Billit::Report, parse_strategy: :sync
+    collection :documents, extend: Billit::DocumentRepresenter, class: Billit::Document, parse_strategy: :sync
+    collection :directives, extend: Billit::DirectiveRepresenter, class: Billit::Directive, parse_strategy: :sync
+    collection :remarks, extend: Billit::RemarkRepresenter, class: Billit::Remark, parse_strategy: :sync
+    collection :revisions, extend: Billit::RevisionRepresenter, class: Billit::Revision, parse_strategy: :sync
 
     link :self do
       bill_url(self.uid)

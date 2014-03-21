@@ -1,12 +1,27 @@
 require 'roar/representer/json'
-require 'billit_representers/representers/bill_representer'
+require 'billit_representers/models/bill_basic'
+require 'billit_representers/representers/bill_basic_representer'
 
 module Billit
-  module BillCollectionPageRepresenter
+  module BillPageRepresenter
+
     include Roar::Representer::JSON
     include Roar::Representer::Feature::Hypermedia
-   
-    collection :bills, :extend => BillRepresenter, :class => Bill
+
+    module Initializer
+      def initialize
+        extend Billit::BillPageRepresenter
+        extend Roar::Representer::Feature::Client
+        super
+      end
+    end
+
+    def self.included(klass)
+      klass.send :prepend, Initializer
+      klass.send :include, Roar::Representer::Feature::HttpVerbs
+    end
+
+    collection :bills, :extend => Billit::BillBasicRepresenter, :class => Billit::BillBasic
 
     property :total_entries
     property :current_page

@@ -1,7 +1,7 @@
-require 'billit_representers/representers/bill_model_collection_page_representer'
+require 'billit_representers/representers/bill_page_representer'
 module Billit
-  class BillCollectionPage
-    include Billit::BillModelCollectionPageRepresenter
+  class BillPage
+    include Billit::BillPageRepresenter
 
     def self
 	  links[:self].href if links[:self]
