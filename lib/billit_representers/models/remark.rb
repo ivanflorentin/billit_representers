@@ -1,6 +1,4 @@
 require 'billit_representers/representers/remark_representer'
-module Billit
-  class Remark
-    include Billit::RemarkRepresenter
-  end
+class BillitRemark
+  include Billit::RemarkRepresenter
 end

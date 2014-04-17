@@ -57,6 +57,7 @@ module Billit
     property :status
     property :resulting_document
     property :law_id, writeable: false
+    property :bill_draft_link
     property :merged_bills
     property :subject_areas
     property :authors
@@ -64,13 +65,13 @@ module Billit
     property :abstract
     property :tags
 
-    collection :paperworks, extend: Billit::PaperworkRepresenter, class: Billit::Paperwork, parse_strategy: :sync
-    collection :priorities, extend: Billit::PriorityRepresenter, class: Billit::Priority, parse_strategy: :sync
-    collection :reports, extend: Billit::ReportRepresenter, class: Billit::Report, parse_strategy: :sync
-    collection :documents, extend: Billit::DocumentRepresenter, class: Billit::Document, parse_strategy: :sync
-    collection :directives, extend: Billit::DirectiveRepresenter, class: Billit::Directive, parse_strategy: :sync
-    collection :remarks, extend: Billit::RemarkRepresenter, class: Billit::Remark, parse_strategy: :sync
-    collection :revisions, extend: Billit::RevisionRepresenter, class: Billit::Revision, parse_strategy: :sync
+    collection :paperworks, extend: Billit::PaperworkRepresenter, class: lambda { |x, *| Object.const_defined?("Paperwork") ? Paperwork : BillitPaperwork }, parse_strategy: :sync
+    collection :priorities, extend: Billit::PriorityRepresenter, class: lambda { |x, *| Object.const_defined?("Priority") ? Priority : BillitPriority }, parse_strategy: :sync
+    collection :reports, extend: Billit::ReportRepresenter, class: lambda { |x, *| Object.const_defined?("Report") ? Report : BillitReport }, parse_strategy: :sync
+    collection :documents, extend: Billit::DocumentRepresenter, class: lambda { |x, *| Object.const_defined?("Document") ? Document : BillitDocument }, parse_strategy: :sync
+    collection :directives, extend: Billit::DirectiveRepresenter, class: lambda { |x, *| Object.const_defined?("Directive") ? Directive : BillitDirective }, parse_strategy: :sync
+    collection :remarks, extend: Billit::RemarkRepresenter, class: lambda { |x, *| Object.const_defined?("Remark") ? Remark : BillitRemark }, parse_strategy: :sync
+    collection :revisions, extend: Billit::RevisionRepresenter, class: lambda { |x, *| Object.const_defined?("Revision") ? Revision : BillitRevision }, parse_strategy: :sync
 
     link :self do
       bill_url(self.uid)
@@ -82,10 +83,6 @@ module Billit
 
     link :law_web do 
         self.law_web_link
-    end
-
-    link :bill_draft do 
-        self.bill_draft_link
     end
 
     @@subject_areas_valid_values =
