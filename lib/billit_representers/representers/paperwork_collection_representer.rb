@@ -20,7 +20,7 @@ module Billit
       klass.send :include, Roar::Representer::Feature::HttpVerbs
     end
    
-    collection :paperworks, :extend => PaperworkRepresenter, :class => Paperwork
+    collection :paperworks, :extend => PaperworkRepresenter, :class =>  lambda { |x, *| Object.const_defined?("Paperwork") ? Paperwork : BillitPaperwork }, parse_strategy: :sync
 
     def paperworks
       collect

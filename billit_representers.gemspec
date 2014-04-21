@@ -1,7 +1,7 @@
 Gem::Specification.new do |gem|
   gem.name        = 'billit_representers'
-  gem.version     = '0.9.2'
-  gem.date        = '2014-04-16'
+  gem.version     = '0.9.3'
+  gem.date        = '2014-04-21'
   gem.summary     = "Representers for the bill-it module of the Poplus project."
   gem.description = "Representers for the bill-it module of the Poplus project. These provide object-like access to remote data, using Resource-Oriented Architectures in Ruby (ROAR)."
   gem.authors     = ["Marcel Augsburger"]
