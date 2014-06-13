@@ -12,6 +12,7 @@ require 'billit_representers/representers/document_representer'
 require 'billit_representers/representers/directive_representer'
 require 'billit_representers/representers/remark_representer'
 require 'billit_representers/representers/revision_representer'
+require 'billit_representers/representers/motion_representer'
 require 'billit_representers/models/paperwork'
 require 'billit_representers/models/priority'
 require 'billit_representers/models/report'
@@ -19,6 +20,7 @@ require 'billit_representers/models/document'
 require 'billit_representers/models/directive'
 require 'billit_representers/models/remark'
 require 'billit_representers/models/revision'
+require 'billit_representers/models/motion'
 
 module Billit
   module BillRepresenter
@@ -72,6 +74,7 @@ module Billit
     collection :directives, extend: Billit::DirectiveRepresenter, class: lambda { |x, *| Object.const_defined?("Directive") ? Directive : BillitDirective }, parse_strategy: :sync
     collection :remarks, extend: Billit::RemarkRepresenter, class: lambda { |x, *| Object.const_defined?("Remark") ? Remark : BillitRemark }, parse_strategy: :sync
     collection :revisions, extend: Billit::RevisionRepresenter, class: lambda { |x, *| Object.const_defined?("Revision") ? Revision : BillitRevision }, parse_strategy: :sync
+    collection :motions, extend: Billit::MotionRepresenter, class: lambda { |x, *| Object.const_defined?("Motion") ? Motion : BillitMotion }, parse_strategy: :sync
 
     link :self do
       bill_url(self.uid)
