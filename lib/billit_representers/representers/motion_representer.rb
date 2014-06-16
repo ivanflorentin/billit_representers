@@ -35,7 +35,7 @@ module Billit
     property :result
     property :session
 
-    collection :vote_events, extend: Billit::VoteEventRepresenter, class: lambda { |x, *| Object.const_defined?("VoteEvent") ? VoteEvent : BillitVoteEvent }, parse_strategy: :sync
+    collection :vote_events, extend: Billit::VoteEventRepresenter, class: lambda { |x, *| Object.const_defined?("VoteEvent") ? VoteEvent : BillitVoteEvent }
 
     link :self do
       motion_url(self.id)

@@ -29,7 +29,7 @@ module Billit
     property :start_date
     property :end_date
 
-    collection :counts, extend: Billit::CountRepresenter, class: lambda { |x, *| Object.const_defined?("Count") ? Count : BillitCount }, parse_strategy: :sync
-    collection :votes, extend: Billit::VoteRepresenter, class: lambda { |x, *| Object.const_defined?("Vote") ? Vote : BillitVote }, parse_strategy: :sync
+    collection :counts, extend: Billit::CountRepresenter, class: lambda { |x, *| Object.const_defined?("Count") ? Count : BillitCount }
+    collection :votes, extend: Billit::VoteRepresenter, class: lambda { |x, *| Object.const_defined?("Vote") ? Vote : BillitVote }
   end
 end
