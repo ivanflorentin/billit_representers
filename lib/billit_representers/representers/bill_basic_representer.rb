@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'roar/representer'
 require 'roar/representer/feature/http_verbs'
 require 'roar/representer/feature/client'
@@ -105,20 +106,20 @@ module Billit
     @@stage_valid_values =
       [
         'Archivado',
-        'Comisión Mixta Ley de Presupuesto',
-        'Comisión Mixta por rechazo de idea de legislar',
-        'Comisión Mixta por rechazo de modificaciones',
-        'Disc. informe C.Mixta por rechazo de modific. en C...',
-        'Discusión veto en Cámara de Origen',
-        'Discusión veto en Cámara Revisora',
-        'Insistencia',
-        'Primer trámite constitucional',
+        #'Comisión Mixta Ley de Presupuesto',
+        #'Comisión Mixta por rechazo de idea de legislar',
+        #'Comisión Mixta por rechazo de modificaciones',
+        #'Disc. informe C.Mixta por rechazo de modific. en C...',
+        #'Discusión veto en Cámara de Origen',
+        #'Discusión veto en Cámara Revisora',
+        #'Insistencia',
+        'Primer trámite',
         'Retirado',
-        'Segundo trámite constitucional',
-        'Tercer trámite constitucional',
+        'Segundo trámite',
+        'Tercer trámite',
         'Tramitación terminada',
-        'Trámite de aprobacion presidencial',
-        'Trámite finalización en Cámara de Origen'
+        #'Trámite de aprobacion presidencial',
+        #'Trámite finalización en Cámara de Origen'
       ]
 
     @@initial_chamber_valid_values =
