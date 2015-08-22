@@ -127,26 +127,42 @@ module Billit
 
     @@stage_valid_values =
       [
-        'Archivado',
-       #'Comisión Mixta Ley de Presupuesto',
-       #'Comisión Mixta por rechazo de idea de legislar',
-       #'Comisión Mixta por rechazo de modificaciones',
-       #'Disc. informe C.Mixta por rechazo de modific. en C...',
-       #'Discusión veto en Cámara de Origen',
-       #'Discusión veto en Cámara Revisora',
-       #'Insistencia',
-        'Primer trámite',
-        'Retirado',
-        'Segundo trámite',
-        'Tercer trámite',
-        'Tramitación terminada',
-        #'Trámite de aprobacion presidencial',
-        #'Trámite finalización en Cámara de Origen'
+        'Ingreso de Respuesta a Pedido de Informe ',
+        'Resolución Unicameral Aprobado ',
+        'Se comunica a quien corresponda ',
+        'Dictamen de comision ',
+        'Discusion plenario ',
+        'Resolucion de archivo ',
+        'Resolución que Aprueba Declaración ',
+        'Proyecto Retirado ',
+        'Resolucion que Aprueba Pedido de Informe ',
+        'Resolucion rechazo modificaciones a Camara Revisora ',
+        'Media sancion ',
+        'Dictamen de Comision - (3T) - Rechazo ',
+        'Archivado ',
+        'Archivado y no se puede repetir en las sesiones del año ',
+        'Resolucion de Sancion segun Camara Revisora ',
+        'Resolucion Sancion Completa ',
+        'Dictamen de Comision - (4T)- Ratifica ',
+        'Discusion Plenario (3T) - Modificaciones ',
+        'En Espera de Publicación ',
+        'Entrada de Respuesta a Pedido de Informe ',
+        'ParteRechaza Objeción Parcial en CO) ',
+        'ParteRechaza ',
+        'Parte Rechaza ',
+        'Discusion Plenario (Aprobado Objeción Parcial - Sanciona Parte No Objetada en CO) ',
+        'Dictamen de Comision (Aprobado Objeción Parcial - Sanciona Parte No Objetada en CO) ',
+        'Dictamen de Comision - (4T) - Rechazo ',
+        'Discusion Plenario (Aprobacion Objeción en CO) ',
+        'Discusion Plenario (3T) - Rechazo ',
+        'Mensaje de modificaciones a Camara de Origen ',
+        ' Trámite de Espera Veto',
+        'Dictamen de Comision (3T) - Modificaciones '
       ]
 
     @@initial_chamber_valid_values =
       [
-        'C.Diputados',
+        'C. Diputados',
         'Senado'
       ]
 
